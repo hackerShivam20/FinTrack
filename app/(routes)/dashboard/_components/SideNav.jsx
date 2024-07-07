@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LayoutDashboard, Wallet, FileText, TrendingUp, PieChart, Settings, UserCircle } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { UserButton } from '@clerk/nextjs';
 
 export default function SideNav() {
   const menuList = [
@@ -52,12 +53,12 @@ export default function SideNav() {
 
       <div className="border-t p-5 space-y-2">
 
-        <Link href="/profile">
-          <div className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-150 ease-in-out">
-            <UserCircle className="w-5 h-5 mr-3" />
-            <span className="font-medium">Profile</span>
-          </div>
-        </Link>
+     
+        <div className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-150 ease-in-out">
+          <UserButton className="w-5 h-5 mr-3" />
+          <span className="font-medium ml-3">Profile</span>
+        </div>
+        
       </div>
     </div>
   );

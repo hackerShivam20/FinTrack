@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { UserButton } from '@clerk/nextjs'
 function DashboardHeader() {
   return (
     <div className='p-5 shadow-sm border-b flex justify-between'>
@@ -7,8 +7,8 @@ function DashboardHeader() {
             
         </div>
         <div>
-            UserProfile
-            {/* <UserButton /> */}
+            
+            <UserButton />
         </div>
         
     </div>
