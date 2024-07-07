@@ -20,11 +20,13 @@ export default function SideNav() {
   return (
     <div className="h-screen w-64 bg-white border-r shadow-sm flex flex-col">
       <div className="p-5 border-b">
-        <Image src={'./logo.svg'}
+        <Image
+          src="/logo.svg"
           alt='logo'
           className='ml-16'
           width={50}
           height={100}
+          priority
         />
       </div>
 
