@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:push": "npx drizzle-kit push:pg",
+    "db:push": "npx drizzle-kit push",
     "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
