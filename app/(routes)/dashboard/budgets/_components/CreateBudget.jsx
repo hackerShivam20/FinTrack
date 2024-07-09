@@ -15,9 +15,14 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Budgets } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'
-import { toast } from 'sonner'
+// import { toast } from 'sonner'
 import { db } from '@/utils/dbConfig'
 import { PlusIcon } from '@heroicons/react/24/outline'
+import { toast } from 'react-toastify';
+
+// import React from "react";
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function CreateBudget() {
     const [emojiIcon, setEmojiIcon] = useState('🤩')
@@ -27,6 +32,19 @@ function CreateBudget() {
     const { user } = useUser()
 
     // used to create new budget
+    // const onCreateBudget = async () => {
+    //     const result = await db.insert(Budgets).values({
+    //         name: budgetName,
+    //         amount: budgetAmount,
+    //         emoji: emojiIcon,
+    //         createdBy: user?.primaryEmailAddress?.emailAddress,
+    //         icon: emojiIcon
+    //     }).returning({ insertedId: Budgets.id })
+    //     if (result) {
+    //         toast.success('Budget Created Successfully!!!')
+    //     }
+    // }
+
     const onCreateBudget = async () => {
         const result = await db.insert(Budgets).values({
             name: budgetName,
@@ -36,7 +54,15 @@ function CreateBudget() {
             icon: emojiIcon
         }).returning({ insertedId: Budgets.id })
         if (result) {
-            toast('Budget Created Successfully!!!')
+            toast.success('Budget Created Successfully!!!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 
