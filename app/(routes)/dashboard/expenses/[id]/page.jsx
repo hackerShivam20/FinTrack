@@ -2,17 +2,22 @@
 import { db } from '@/utils/dbConfig'
 import { Budgets, Expenses } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'
-import { eq, getTableColumns, sql } from 'drizzle-orm'
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
 import BudgetItems from '../../budgets/_components/BudgetItems'
 import AddExpense from './_components/AddExpense'
+import ExpenseListTable from './_components/ExpenseListTable'
 
 function expenses({ params }) {
   const {user}=useUser();
   const [budgetInfo,setBudgetInfo]=useState();
+  const [expensesList,setExpensesList]=useState([]);
   useEffect(() => {
-    user&&getBudgetInfo()
+    user&&getBudgetInfo();
   }, [user])
+
+  // for budget display
+
   const getBudgetInfo = async () => {
     const result = await db.select({
       ...getTableColumns(Budgets),
@@ -23,10 +28,21 @@ function expenses({ params }) {
       .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
       .where(eq(Budgets.id,params.id))
       .groupBy(Budgets.id)
-      
-      
-      setBudgetInfo(result[0])
-      
+
+      setBudgetInfo(result[0]);
+      getExpensesList();
+  }
+
+  // for display expenses
+  // get latest Expenses
+
+  const getExpensesList= async()=>{
+    const result = await db.select().from(Expenses)
+    .where(eq(Expenses.budgetId,params.id))
+    .orderBy(desc(Expenses.id));
+    setExpensesList(result);
+
+    console.log(result)
   }
 
   return (
@@ -39,7 +55,15 @@ function expenses({ params }) {
           </div>
           
         }
-        <AddExpense budgetId={params.id} user={user} refreshData={()=>getBudgetInfo()}/>
+        <AddExpense budgetId={params.id} user={user}
+        refreshData={()=>getBudgetInfo()}
+        />
+
+      </div>
+      <div className='mt-4'>
+        <h2 className='font-bold text-lg'>Latest Expenses</h2>
+        <ExpenseListTable expensesList={expensesList}
+        refreshData={()=>getBudgetInfo()}/>
       </div>
     </div>
   )
