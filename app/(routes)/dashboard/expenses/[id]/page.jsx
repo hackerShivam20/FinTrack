@@ -78,7 +78,7 @@ function expenses({ params }) {
 
       // refreshData={()=>getBudgetInfo()}
       toast.warning('Budget Removed Successfully!', {
-          position: "bottom-right",
+          position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
