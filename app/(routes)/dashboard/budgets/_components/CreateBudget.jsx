@@ -24,7 +24,7 @@ import { toast } from 'react-toastify';
 // import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
-function CreateBudget() {
+function CreateBudget({refreshData}) {
     const [emojiIcon, setEmojiIcon] = useState('🤩')
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
     const [budgetName, setBudgetName] = useState()
@@ -54,6 +54,7 @@ function CreateBudget() {
             icon: emojiIcon
         }).returning({ insertedId: Budgets.id })
         if (result) {
+            refreshData();
             toast.success('Budget Created Successfully!!!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -89,7 +90,7 @@ function CreateBudget() {
                                     {emojiIcon}
                                 </Button>
                             </div>
-                            <div className='absolute'>
+                            <div className='absolute z-20'>
                                 <EmojiPicker open={openEmojiPicker} onEmojiClick={(e) => {
                                     setEmojiIcon(e.emoji)
                                     setOpenEmojiPicker(false)
