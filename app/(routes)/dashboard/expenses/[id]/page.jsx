@@ -8,7 +8,7 @@ import BudgetItems from '../../budgets/_components/BudgetItems'
 import AddExpense from './_components/AddExpense'
 import ExpenseListTable from './_components/ExpenseListTable'
 import { Button } from '@/components/ui/button'
-import { Trash } from 'lucide-react'
+import { Pen, PenBox, Trash } from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,15 +22,16 @@ import {
 } from "@/components/ui/alert-dialog"
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify';
+import EditBudget from './_components/EditBudget'
 
 
 function expenses({ params }) {
-  const {user}=useUser();
-  const [budgetInfo,setBudgetInfo]=useState();
-  const [expensesList,setExpensesList]=useState([]);
-  const route=useRouter();
+  const { user } = useUser();
+  const [budgetInfo, setBudgetInfo] = useState();
+  const [expensesList, setExpensesList] = useState([]);
+  const route = useRouter();
   useEffect(() => {
-    user&&getBudgetInfo();
+    user && getBudgetInfo();
   }, [user])
 
   // for budget display
@@ -43,20 +44,20 @@ function expenses({ params }) {
     }).from(Budgets)
       .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
       .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
-      .where(eq(Budgets.id,params.id))
+      .where(eq(Budgets.id, params.id))
       .groupBy(Budgets.id)
 
-      setBudgetInfo(result[0]);
-      getExpensesList();
+    setBudgetInfo(result[0]);
+    getExpensesList();
   }
 
   // for display expenses
   // get latest Expenses
 
-  const getExpensesList= async()=>{
+  const getExpensesList = async () => {
     const result = await db.select().from(Expenses)
-    .where(eq(Expenses.budgetId,params.id))
-    .orderBy(desc(Expenses.id));
+      .where(eq(Expenses.budgetId, params.id))
+      .orderBy(desc(Expenses.id));
     setExpensesList(result);
 
     console.log(result)
@@ -64,27 +65,27 @@ function expenses({ params }) {
 
 
   // Use to delete Budget
-  const deleteBudget=async()=>{
+  const deleteBudget = async () => {
 
-    const deleteExpenseResult=await db.delete(Expenses)
-    .where(eq(Expenses.budgetId,params.id))
-    .returning()
+    const deleteExpenseResult = await db.delete(Expenses)
+      .where(eq(Expenses.budgetId, params.id))
+      .returning()
 
-    if(deleteExpenseResult){
-      const result=await db.delete(Budgets)
-      .where(eq(Budgets.id,params.id))
-      .returning();
+    if (deleteExpenseResult) {
+      const result = await db.delete(Budgets)
+        .where(eq(Budgets.id, params.id))
+        .returning();
 
 
       // refreshData={()=>getBudgetInfo()}
       toast.warning('Budget Removed Successfully!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
       route.replace('/dashboard/budgets');
     }
@@ -95,12 +96,16 @@ function expenses({ params }) {
     <div className='p-10'>
       <h2 className='text-2xl font-bold flex justify-between items-center'>My expenses
 
-        
+        <div className='flex gap-2 items-center'>
+
+
+          <EditBudget budgetInfo={budgetInfo} refreshData={()=>getBudgetInfo()}/>
+
           <AlertDialog>
 
             <AlertDialogTrigger asChild>
               <Button className='flex gap-2' variant="destructive">
-              <Trash/> Bye</Button>
+                <Trash /> Bye</Button>
 
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -113,29 +118,29 @@ function expenses({ params }) {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={()=>deleteBudget()}>Continue</AlertDialogAction>
+                <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-
+        </div>
 
       </h2>
       <div className='grid grid-cols-1 md:grid-cols-2 mt-6 gap-5'>
         {
-          budgetInfo?<BudgetItems budget={budgetInfo}/>:
-          <div className='h-[150px] w-full  bg-slate-200 rounded-lg animate-pulse'>
-          </div>
-          
+          budgetInfo ? <BudgetItems budget={budgetInfo} /> :
+            <div className='h-[150px] w-full  bg-slate-200 rounded-lg animate-pulse'>
+            </div>
+
         }
         <AddExpense budgetId={params.id} user={user}
-        refreshData={()=>getBudgetInfo()}
+          refreshData={() => getBudgetInfo()}
         />
 
       </div>
       <div className='mt-4'>
         <h2 className='font-bold text-lg'>Latest Expenses</h2>
         <ExpenseListTable expensesList={expensesList}
-        refreshData={()=>getBudgetInfo()}/>
+          refreshData={() => getBudgetInfo()} />
       </div>
     </div>
   )
