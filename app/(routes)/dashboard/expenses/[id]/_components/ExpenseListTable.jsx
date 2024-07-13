@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm'
 import Modal from './Modal'  // Adjust the import path as necessary
 import { useCallback } from 'react'
 
-function ExpenseListTable({ expensesList, refreshData }) {
+function ExpenseListTable({ ExpensesList, refreshData }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [expenseToDelete, setExpenseToDelete] = useState(null);
 
@@ -45,14 +45,15 @@ function ExpenseListTable({ expensesList, refreshData }) {
 
     return (
         <div className='mt-3'>
-            <div className='grid grid-cols-4 bg-slate-200 p-2'>
+            <h2 className='font-bold text-lg'>Latest Expenses</h2>
+            <div className='grid grid-cols-4 bg-slate-200 p-2 mt-3'>
                 <h2 className='font-bold'>Name</h2>
                 <h2 className='font-bold'>Amount</h2>
                 <h2 className='font-bold'>Date</h2>
                 <h2 className='font-bold'>Action</h2>
             </div>
 
-            {expensesList.map((expense) => (
+            {ExpensesList.map((expense) => (
                 <div key={expense.id} className='grid grid-cols-4 bg-slate-50 p-2'>
                     <h2>{expense.name}</h2>
                     <h2>{expense.amount}</h2>

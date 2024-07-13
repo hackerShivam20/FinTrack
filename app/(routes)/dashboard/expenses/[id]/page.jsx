@@ -28,7 +28,7 @@ import EditBudget from './_components/EditBudget'
 function expenses({ params }) {
   const { user } = useUser();
   const [budgetInfo, setBudgetInfo] = useState();
-  const [expensesList, setExpensesList] = useState([]);
+  const [ExpensesList, setExpensesList] = useState([]);
   const route = useRouter();
   useEffect(() => {
     user && getBudgetInfo();
@@ -138,8 +138,7 @@ function expenses({ params }) {
 
       </div>
       <div className='mt-4'>
-        <h2 className='font-bold text-lg'>Latest Expenses</h2>
-        <ExpenseListTable expensesList={expensesList}
+        <ExpenseListTable ExpensesList={ExpensesList}
           refreshData={() => getBudgetInfo()} />
       </div>
     </div>
