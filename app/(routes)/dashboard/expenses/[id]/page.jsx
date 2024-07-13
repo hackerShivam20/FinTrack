@@ -5,8 +5,8 @@ import { useUser } from '@clerk/nextjs'
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
 import BudgetItems from '../../budgets/_components/BudgetItems'
-import AddExpense from './_components/AddExpense'
-import ExpenseListTable from './_components/ExpenseListTable'
+import AddExpense from '../_components/AddExpense'
+import ExpenseListTable from '../_components/ExpenseListTable'
 import { Button } from '@/components/ui/button'
 import { Pen, PenBox, Trash } from 'lucide-react'
 import {
@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify';
-import EditBudget from './_components/EditBudget'
+import EditBudget from '../_components/EditBudget'
 
 
 function expenses({ params }) {
