@@ -1,10 +1,11 @@
+"use client";
 import React, { useState } from 'react'
 import { Trash } from 'lucide-react'
 import { Expenses } from '@/utils/schema'
 import { db } from '@/utils/dbConfig'
 import { toast } from 'react-toastify'
 import { eq } from 'drizzle-orm'
-import Modal from './Modal'  // Adjust the import path as necessary
+import Modal from '../_components/Modal'  // Adjust the import path as necessary
 import { useCallback } from 'react'
 
 function ExpenseListTable({ ExpensesList, refreshData }) {
