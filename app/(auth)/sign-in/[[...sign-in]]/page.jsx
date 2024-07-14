@@ -13,7 +13,7 @@ export default function Page() {
                     />
 
                     <div class="hidden lg:relative lg:block lg:p-12">
-                        <a class="block text-white" href="#">
+                        {/* <a class="block text-white" href="#">
                             <span class="sr-only">Home</span>
                             <svg
                                 class="h-8 sm:h-10"
@@ -26,16 +26,19 @@ export default function Page() {
                                     fill="currentColor"
                                 />
                             </svg>
-                        </a>
+                        </a> */}
 
-                        <h2 class="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                            Welcome to FinTrack 💰💰
-                        </h2>
-
-                        <p class="mt-4 leading-relaxed text-white/90">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                            quibusdam aperiam voluptatum.
-                        </p>
+                        <div className=" text-white text-4xl">
+                            <h1 className="text-6xl  font-bold mb-4">Welcome to FinTrack</h1>
+                            <p className="mb-6">Sign in to manage your finances with ease</p>
+                            <ul className="text-left list-disc list-inside mb-6">
+                                <li>Track your daily expenses</li>
+                                <li>Set and monitor budgets</li>
+                                <li>View spending insights</li>
+                                <li>Secure and easy to use</li>
+                            </ul>
+                            <p className="text-sm">Take control of your financial future today!</p>
+                        </div>
                     </div>
                 </section>
 
@@ -44,7 +47,7 @@ export default function Page() {
                 >
                     <div class="max-w-xl lg:max-w-3xl">
                         <div class="relative -mt-16 block lg:hidden">
-                            <a
+                            {/* <a
                                 class="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
                                 href="#"
                             >
@@ -60,16 +63,13 @@ export default function Page() {
                                         fill="currentColor"
                                     />
                                 </svg>
-                            </a>
+                            </a> */}
 
-                            <h1 class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                                Welcome to Squid 🦑
+                            <h1 class="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                                Welcome to Fintrack
                             </h1>
 
-                            <p class="mt-4 leading-relaxed text-gray-500">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                quibusdam aperiam voluptatum.
-                            </p>
+                            
                         </div>
 
                         <SignIn />
