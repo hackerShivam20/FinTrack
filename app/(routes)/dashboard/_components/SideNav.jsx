@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { LayoutDashboard, Wallet, FileText, TrendingUp, PieChart, Settings, UserCircle } from 'lucide-react';
+import { LayoutDashboard, Wallet, FileText, TrendingUp, PieChart, Settings, UserCircle, Calendar } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { UserButton } from '@clerk/nextjs';
 
@@ -12,8 +12,9 @@ export default function SideNav() {
     { id: 1, name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
     { id: 2, name: 'Budgets', icon: Wallet, path: '/dashboard/budgets' },
     { id: 3, name: 'Expenses', icon: FileText, path: '/dashboard/expenses' },
-    { id: 4, name: 'Investments', icon: TrendingUp, path: '/dashboard/investments' },
-    { id: 5, name: 'Reports', icon: PieChart, path: '/dashboard/reports' },
+    { id: 4, name: 'Payment-Reminder', icon: Calendar, path: '/dashboard/reminder' },
+    { id: 5, name: 'Investments', icon: TrendingUp, path: '/dashboard/investments' },
+    { id: 6, name: 'Reports', icon: PieChart, path: '/dashboard/reports' },
   ];
 
   const path = usePathname();
