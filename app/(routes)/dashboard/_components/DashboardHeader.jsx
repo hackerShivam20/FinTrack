@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { FaArrowUp } from 'react-icons/fa'; // Import the arrow up icon from react-icons
+// import Footer from './Footer'; // Import the Footer component
 
 function DashboardHeader() {
   const { user, isSignedIn } = useUser();
@@ -38,9 +39,10 @@ function App() {
       <button
         onClick={scrollToTop}
         className='fixed bottom-4 right-4 bg-primary text-white p-3 rounded-xl shadow-lg flex items-center justify-center'
-      >
+        >
         <FaArrowUp size={20} />
       </button>
+        {/* <Footer /> Add the Footer component here */}
     </div>
   );
 }

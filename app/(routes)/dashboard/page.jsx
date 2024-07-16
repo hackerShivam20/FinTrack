@@ -8,6 +8,7 @@ import { Budgets,Expenses } from '@/utils/schema'
 import BarChartDashboard from './_components/BarChartDashboard';
 import BudgetItems from './budgets/_components/BudgetItems';
 import ExpenseListTable from './expenses/_components/ExpenseListTable';
+import Footer from './_components/Footer';
 
 export default function Dashboard(){
   // const {user}=useUser();
@@ -67,10 +68,13 @@ export default function Dashboard(){
           <h2 className='font-bold text-xl'>Budgets</h2>
           
           {BudgetList.map((budget,index)=>(
-              <BudgetItems key={index} budget={budget}/>
-            ))
-          }
+            <BudgetItems key={index} budget={budget}/>
+          ))
+        }
         </div>
+      </div>
+      <div className='display-flex mt-9 justify-between width-full'>
+        <Footer /> {/* Add the Footer component here */}
       </div>
     </div>
   );

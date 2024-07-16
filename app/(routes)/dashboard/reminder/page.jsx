@@ -7,6 +7,8 @@ import { sql } from 'drizzle-orm';
 import BillsList from './_components/BillsList';
 import { toast } from 'react-toastify'
 import { useEffect } from 'react';
+import Footer from '../_components/Footer';
+
 
 export default async function bills() {
     const allBills = await db.select().from(Bills);
@@ -67,6 +69,9 @@ export default async function bills() {
                 <section>
                     <BillsList />
                 </section>
+            </div>
+            <div className='display-flex mt-9 justify-between width-full'>
+                <Footer /> {/* Add the Footer component here */}
             </div>
         </div>
     );
