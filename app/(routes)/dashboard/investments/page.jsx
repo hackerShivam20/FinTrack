@@ -22,12 +22,12 @@ function page() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
-          <a href="https://twitter.com/youraccount" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Follow us on Twitter &rarr;</h2>
+        <a href="https://github.com/hackerShivam20/FinTrack" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Give us a Star on Github &rarr;</h2>
             <p className="text-gray-600">Get the latest updates about our launch.</p>
           </a>
 
-          <a href="mailto:info@yourcompany.com" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <a href="mailto:fintrackexpensetracker@gmail.com" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">Contact Us &rarr;</h2>
             <p className="text-gray-600">Have questions? We'd love to hear from you.</p>
           </a>
