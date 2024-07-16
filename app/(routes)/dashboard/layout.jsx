@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideNav from './_components/SideNav'
 import DashboardHeader from './_components/DashboardHeader'
 import { db } from '@/utils/dbConfig'
@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 export default function Dashboardlayout({ children }) {
   const router=useRouter()
   const { user } = useUser();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(()=>{
       user&&checkUserBudget()
   },[user])
@@ -21,14 +22,17 @@ export default function Dashboardlayout({ children }) {
       router.replace('/dashboard/budgets')
     }  
   }
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  }
   return (
-    <div>
-      <div className='fixed w-64 h-screen hidden md:block'>
-        <SideNav />
-      </div>
-      <div className='md:ml-64'>
-        <DashboardHeader />
-        {children}
+    <div className="flex h-screen bg-gray-100">
+      <SideNav isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} />
+      <div className="flex-1 flex flex-col overflow-hidden md:ml-64">
+        <DashboardHeader toggleMobileMenu={toggleMobileMenu} />
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4">
+          {children}
+        </main>
       </div>
     </div>
   )

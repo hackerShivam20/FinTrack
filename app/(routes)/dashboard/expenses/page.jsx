@@ -5,6 +5,7 @@ import { db } from '@/utils/dbConfig';
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
 import { Budgets, Expenses } from '@/utils/schema'
 import ExpenseListTable from './_components/ExpenseListTable';
+import Footer from '../_components/Footer';
 
 function Page() {
     const { user } = useUser();
@@ -45,6 +46,7 @@ function Page() {
     }
 
     return (
+        <>
         <div className="p-6">
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
                 <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
@@ -58,6 +60,10 @@ function Page() {
                 </div>
             </div>
         </div>
+         <div className='position:fixed display-flex mt-9 justify-between width-full bottom-0'>
+         <Footer /> {/* Add the Footer component here */}
+       </div>
+       </>
     )
 }
 
