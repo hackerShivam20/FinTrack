@@ -1,6 +1,7 @@
 import React from 'react'
 import BudgetList from './_components/BudgetList'
 import { CurrencyDollarIcon, ChartBarIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline'
+import Footer from '../_components/Footer'
 
 function page() {
   return (
@@ -16,6 +17,9 @@ function page() {
         <h2 className='text-2xl font-semibold mb-4 text-gray-700'>Your Budgets</h2>
         <BudgetList />
       </section>
+      <div className='position:fixed display-flex mt-9 justify-between width-full bottom-0'>
+        <Footer /> {/* Add the Footer component here */}
+      </div>
     </div>
   )
 }

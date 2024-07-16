@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
+import Footer from '../_components/Footer'
 
 function page() {
   return (
-
+    <>
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
       <Head>
         <title>Coming Soon</title>
@@ -21,18 +22,22 @@ function page() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
-          <a href="https://github.com/hackerShivam20/FinTrack" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Star Our Repo on Github &rarr;</h2>
+          <a href="https://twitter.com/youraccount" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Follow us on Twitter &rarr;</h2>
             <p className="text-gray-600">Get the latest updates about our launch.</p>
           </a>
 
-          <a href="mailto:fintrackexpensetracker@gmail.com" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <a href="mailto:info@yourcompany.com" className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">Contact Us &rarr;</h2>
             <p className="text-gray-600">Have questions? We'd love to hear from you.</p>
           </a>
         </div>
       </main>
     </div>
+    <div className='position:fixed display-flex mt-9 justify-between width-full bottom-0'>
+     <Footer /> {/* Add the Footer component here */}
+   </div>
+   </>
   )
 }
 
