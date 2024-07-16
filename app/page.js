@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Header from "./_component/Header";
-import Mainfront from "./_component/mainfront";
+import Mainfront from "./_component/Mainfront";
 
 
 export default function Home() {
