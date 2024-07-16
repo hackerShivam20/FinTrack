@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
+import Footer from '../_components/Footer'
 
 function page() {
   return (
-
+    <>
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
       <Head>
         <title>Coming Soon</title>
@@ -33,6 +34,10 @@ function page() {
         </div>
       </main>
     </div>
+    <div className='position:fixed display-flex mt-9 justify-between width-full bottom-0'>
+     <Footer /> {/* Add the Footer component here */}
+   </div>
+   </>
   )
 }
 

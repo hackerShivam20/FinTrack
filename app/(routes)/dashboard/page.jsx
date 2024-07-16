@@ -73,7 +73,7 @@ export default function Dashboard(){
         }
         </div>
       </div>
-      <div className='display-flex mt-9 justify-between width-full'>
+      <div className='position:fixed display-flex mt-9 justify-between width-full bottom-0'>
         <Footer /> {/* Add the Footer component here */}
       </div>
     </div>
